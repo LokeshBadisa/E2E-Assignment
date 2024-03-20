@@ -1,0 +1,8 @@
+*.hdf5
+*.parquet
+*.h5
+mlruns
+__pycache__
+maskrat*
+firstexp.pt
+visualization.ipynb
