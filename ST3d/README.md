@@ -1,6 +1,7 @@
 # Specific Task :  Masked Auto-Encoder for End-to-End Particle Reconstruction project
 
-Do
+Pretraining Task : Training a lightweight ViT with pre-training startegy described in ViT MAE paper.
+
 
 ### BackBone architecture:
 I used the default ViT-MAE architecture with modified number of layers and dimensions.
@@ -26,21 +27,49 @@ It is evident from the above that very high masking ratio of 75% is too much unl
 ### Guidelines on the code 
 
 #### Pretraining
-Pretraining script can be found as `apretrain.py`. It uses `argparse` library to parse the arguments from terminal. The script can be run as follows:
+Pretraining script can be found as `pretrain.py`. It uses `argparse` library to parse the arguments from terminal. The script can be run as follows:
 
 ```bash
-python apretrain.py --runname <runname>
+python pretrain.py --runname <runname>
 ```
 
 For customization, you can add more arguments to the script which can be found in the `argparse` section of the script.
 
 #### Fine-tuning
-Pretraining script can be found as `apretrain.py`. It uses `argparse` library to parse the arguments from terminal. The script can be run as follows:
+Pretraining script can be found as `pretrain.py`. It uses `argparse` library to parse the arguments from terminal. The script can be run as follows:
 
 ```bash
-python afinetune.py --runname <runname> --wpath <path to the pre-trained weights> 
+python finetune.py --runname <runname> --wpath <path to the pre-trained weights> 
 ```
 
 For customization, you can add more arguments to the script which can be found in the `argparse` section of the script.
 
-For more details, you can refer to `scr1.sh` , `scr2.sh` and `scr3.sh` which are the scripts to run the pretraining and fine-tuning scripts.
+
+### Submitted Model particulars:
+
+* No.of parameters :  9,849,602
+* Testing accuracy :  78.45 %
+
+Here are the network hyperparameters:
+* decoder depth : 8
+* decoder dim : 128
+* encoder depth : 12
+* encoder dim : 256
+* encoder heads : 4
+* decoder heads : 8
+
+Hyperparameters for pre-training:
+
+* Masking Ratio : 0.15
+* Used only Z-normalization
+* Optimizer : AdamW
+* Batch Size : 256
+* Learning Rate : 1e-3
+* Epochs : 100
+
+Hyperparameters for fine-tuning:
+* No normalization  
+* Optimizer : AdamW
+* Batch Size : 64
+* Learning Rate : 1e-2
+* Epochs : 100
