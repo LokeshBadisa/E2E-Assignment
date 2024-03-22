@@ -1,0 +1,14 @@
+torch-summary
+torch
+h5py
+numpy
+argparse
+mlflow
+einops
+tqdm
+scikit-learn
+torchvision
+pathlib
+typing
+pyarrow
+timm
